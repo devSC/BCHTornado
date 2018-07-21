@@ -69,26 +69,28 @@ class Wallet {
         return privateKey
     }
     
-    
-//    func sign(payment: Payment) throws -> Transaction {
-//        let privateKey = getPrivateKey()!
-//        let key = BTCKey(privateKey: privateKey)
-//        let to = BTCAddress(string: payment.to)!
-//        let formatter = BTCNumberFormatter(bitcoinUnit: .satoshi)
-//        let amount = formatter?.amount(from: String(payment.value))
-//        let fee: BTCAmount = Int64(payment.gasPrice)
-//        let (nilableTransaction, error) = transactionSpendingFrom(privateKey: privateKey,
-//                                                                  destinationAddress: to,
-//                                                                  changeAddress: key!.compressedPublicKeyAddress,
-//                                                                  amount: amount!,
-//                                                                  fee: fee)
-//        guard let btcTransaction = nilableTransaction else {
-//            print("error: \(String(describing: error))")
-//            fatalError("sign errore")
+//    func transformReceiverAndAmount(toValues: Array<[String: BigInt]>) -> Array<[BTCAddress: BigInt]> {
+//        toValues.forEach { (receiveInfo) in
+//            receiveInfo.
 //        }
-//
-//        return Transaction(payment: payment, hash: btcTransaction.data, hashString: btcTransaction.data.toHexString(), txhash: btcTransaction.transactionID)
 //    }
+    
+    func sign(toValues: Array<ReceiveInfo>) throws -> BTCTransaction {
+        let privateKey = getPrivateKey()!
+        let key = BTCKey(privateKey: privateKey)
+        let fee: BTCAmount = 1000
+        let (nilableTransaction, error) = transactionSpendingFrom(privateKey: privateKey,
+                                                                  destinationAddressAmounts: toValues,
+                                                                  changeAddress: key!.compressedPublicKeyAddress,
+                                                                  fee: fee)
+        guard let bchTransaction = nilableTransaction else {
+            print("error: \(String(describing: error))")
+            fatalError("sign errore")
+        }
+
+        return bchTransaction
+//        return Transaction(payment: payment, hash: btcTransaction.data, hashString: btcTransaction.data.toHexString(), txhash: btcTransaction.transactionID)
+    }
     
     func checkIsValid(address: String?) -> Bool {
         guard let address = address, BTCAddress(string: address) != nil else { return false }
@@ -102,13 +104,19 @@ class Wallet {
         return estimateSize.multiplied(by: bigintValue)
     }
     
+    func formatterToUnitString(value: BigUInt) -> String {
+        return AssetNumberFormatter.formatToUnits(for: type, amount: value, decimals: 8)
+    }
+    
+    func parseToBigUInt(value: String) -> BigUInt {
+        return AssetNumberFormatter.parseToBigUInt(for: type, amount: value) ?? BigUInt(0)
+    }
 }
 
 extension Wallet {
     func transactionSpendingFrom(privateKey: Data,
-                                 destinationAddress: BTCAddress,
+                                 destinationAddressAmounts: Array<ReceiveInfo>,
                                  changeAddress: BTCPublicKeyAddress,
-                                 amount: BTCAmount,
                                  fee: BTCAmount) -> (BTCTransaction?, Error?) {
         // 1. Get a private key, destination address, change address and amount
         // 2. Get unspent outputs for that key (using both compressed and non-compressed pubkey)
@@ -120,7 +128,7 @@ extension Wallet {
         var errorOut: Error?
         var unwrappedUtxos: [BTCTransactionOutput]?
         do {
-            unwrappedUtxos = try BTCBlockchainInfo().unspentOutputs(withAddresses: [key.compressedPublicKeyAddress]) as? [BTCTransactionOutput]
+            unwrappedUtxos = try BitboxApi().unspentOutputs(withAddress: key.compressedPublicKeyAddress.string) as? [BTCTransactionOutput]
         } catch {
             errorOut = error
         }
@@ -131,8 +139,13 @@ extension Wallet {
         guard let utxos = unwrappedUtxos else {
             return (nil, errorOut)
         }
+        
+        var receiveAmount: BigInt = BigInt()
+        destinationAddressAmounts.forEach { receiveInfo in
+            receiveAmount = receiveAmount + receiveInfo.amount
+        }
         // Find enough outputs to spend the total amount.
-        let totalAmount = amount + fee
+        let totalAmount = Int64(receiveAmount) + fee
         
         // We need to avoid situation when change is very small. In such case we should leave smallest coin alone and add some bigger one.
         // Ideally, we need to maintain more-or-less binary distribution of coins: having 0.001, 0.002, 0.004, 0.008, 0.016, 0.032, 0.064, 0.128, 0.256, 0.512, 1.024 etc.
@@ -192,21 +205,22 @@ extension Wallet {
             
             spentCoins += txout.value
             
-            print("txhash: http://blockchain.info/rawtx/\(BTCHexFromData(txout.transactionHash))")
-            print("txhash: http://blockchain.info/rawtx/\(BTCHexFromData(BTCReversedData(txout.transactionHash))) (reversed)")
+            print("txhash: https://bch.btc.com/\(BTCHexFromData(txout.transactionHash)!)")
+            print("txhash: https://bch.btc.com/\(BTCHexFromData(BTCReversedData(txout.transactionHash))!) (reversed)")
         }
         
         print(String(format: "Total satoshis to spend:       %lld", spentCoins))
-        print(String(format: "Total satoshis to destination: %lld", amount))
+        print(String(format: "Total satoshis to destination: %lld", Int64(receiveAmount)))
         print(String(format: "Total satoshis to fee:         %lld", fee))
-        print(String(format: "Total satoshis to change:      %lld", spentCoins - (amount + fee)))
+        print(String(format: "Total satoshis to change:      %lld", spentCoins - (Int64(receiveAmount) + fee)))
         
         // Add required outputs - payment and change
-        let paymentOutput = BTCTransactionOutput(value: amount, address: destinationAddress)
-        let changeOutput = BTCTransactionOutput(value: spentCoins - totalAmount, address: changeAddress)
+        destinationAddressAmounts.forEach { receiver in
+            let paymentOutput = BTCTransactionOutput(value: Int64(receiver.amount), address: receiver.bchAddress)
+            tx.addOutput(paymentOutput)
+        }
         
-        // Idea: deterministically-randomly choose which output goes first to improve privacy.
-        tx.addOutput(paymentOutput)
+        let changeOutput = BTCTransactionOutput(value: spentCoins - totalAmount, address: changeAddress)
         
         if changeOutput!.value > 0 {
             tx.addOutput(changeOutput)
@@ -220,7 +234,7 @@ extension Wallet {
             let txin = tx.inputs[i] as! BTCTransactionInput
             let sigScript = BTCScript()!
             
-            let hashType: BTCSignatureHashType = .SIGHASH_ALL
+            let hashType: BTCSignatureHashType = .BCHSignatureHashTypeForkIDAll
             let getHash: Data?
             
             do {
@@ -247,7 +261,8 @@ extension Wallet {
         let scriptMachine = BTCScriptMachine(transaction: tx, inputIndex: 0)
         do {
             let script = txouts.first?.script.copy() as! BTCScript
-            try scriptMachine?.verify(withOutputScript: script)
+            let result = try scriptMachine?.verify(withOutputScript: script)
+            print("self machine verified: \(result!)")
         } catch {
             print("error: \(error)")
             fatalError("verify failed")

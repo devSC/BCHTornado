@@ -47,7 +47,7 @@
         txout.script = [[BTCScript alloc] initWithData:BTCDataFromHex(item[@"scriptPubKey"])];
         txout.index = [item[@"vout"] intValue];
         txout.confirmations = [item[@"confirmations"] unsignedIntegerValue];
-        txout.transactionHash = (BTCDataFromHex(item[@"txid"])); // unlike many other APIs, here tx_hash is not reversed, but a raw hash in hex.
+        txout.transactionHash = BTCReversedData((BTCDataFromHex(item[@"txid"]))); //  here txid is  reversed
         
         [outputs addObject:txout];
     }

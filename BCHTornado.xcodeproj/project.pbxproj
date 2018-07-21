@@ -10,6 +10,7 @@
 		473A74ED21032926005A05CE /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A74EC21032926005A05CE /* Wallet.swift */; };
 		473A74EF2103376B005A05CE /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A74EE2103376B005A05CE /* Mnemonic.swift */; };
 		473A74F1210356D8005A05CE /* BitboxApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 473A74F0210356D8005A05CE /* BitboxApi.m */; };
+		473A74F421038468005A05CE /* ReceiveInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A74F321038468005A05CE /* ReceiveInfo.swift */; };
 		47C33F7FDE2FEA21758780AF /* Pods_BCHTornado.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03B90661507999D3A419451 /* Pods_BCHTornado.framework */; };
 		74F6FF6985F294B1A938BF97 /* Pods_BCHTornadoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090CB8C3933F53255B421778 /* Pods_BCHTornadoUITests.framework */; };
 		C83A44202103A879000F53E9 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A44122103A878000F53E9 /* TransferViewController.swift */; };
@@ -64,6 +65,7 @@
 		473A74EE2103376B005A05CE /* Mnemonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		473A74F0210356D8005A05CE /* BitboxApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitboxApi.m; sourceTree = "<group>"; };
 		473A74F2210356F3005A05CE /* BitboxApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BitboxApi.h; sourceTree = "<group>"; };
+		473A74F321038468005A05CE /* ReceiveInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveInfo.swift; sourceTree = "<group>"; };
 		740C8BFED169A30DEC7C2F90 /* Pods-BCHTornadoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornadoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornadoTests/Pods-BCHTornadoTests.release.xcconfig"; sourceTree = "<group>"; };
 		7495BDBDD7A09B0D228256E3 /* Pods_BCHTornadoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BCHTornadoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CF17BA711F409250F47E14 /* Pods-BCHTornado.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornado.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornado/Pods-BCHTornado.debug.xcconfig"; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				473A74EE2103376B005A05CE /* Mnemonic.swift */,
 				473A74F2210356F3005A05CE /* BitboxApi.h */,
 				473A74F0210356D8005A05CE /* BitboxApi.m */,
+				473A74F321038468005A05CE /* ReceiveInfo.swift */,
 			);
 			path = BCHTornado;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				473A74F1210356D8005A05CE /* BitboxApi.m in Sources */,
 				C83A44262103A879000F53E9 /* AssetDetailView.swift in Sources */,
 				C83A44252103A879000F53E9 /* WelcomViewController.swift in Sources */,
+				473A74F421038468005A05CE /* ReceiveInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
