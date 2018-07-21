@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import BigInt
+import CryptoSwift
 
 class ViewController: UIViewController {
 
@@ -29,6 +31,15 @@ class ViewController: UIViewController {
             errorOut = error
         }
         print("UTXOs for 17Qp9DRhgZvEqM9waX88QkGU9g86ABY5uc: \(String(describing: unwrappedUtxos)) \(String(describing: errorOut))")
+        
+        let receiver = ReceiveInfo(address: "1GJZp8GP2i9KBkiaqr1chT1j9XPGPvHf9D", amount: BigInt(100000))
+        do {
+            let tx = try wallet.sign(toValues: [receiver])
+            let rawTxData = tx.data.toHexString()
+            print(rawTxData)
+        } catch {
+            
+        }
         
     }
 
