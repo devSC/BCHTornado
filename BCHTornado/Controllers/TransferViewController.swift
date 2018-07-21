@@ -9,6 +9,8 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SwifterSwift
+import PKHUD
 
 class TransferViewModel: ReceiveViewModel {
     
@@ -49,7 +51,6 @@ class TransferViewController: UITableViewController, StoryboardLoadable {
         configureSubview()
         startRequestSchedule()
     }
-
     
     // MARK: - Table view data source
 
@@ -75,7 +76,54 @@ class TransferViewController: UITableViewController, StoryboardLoadable {
         cell.addressLabel.text = userAddress.address
         return cell
     }
-
+    
+    @IBAction func sendButtonAction(_ sender: Any) {
+        showSendValueAlert()
+    }
+    
+    func showSendValueAlert() {
+        let alertController = UIAlertController(
+            title: "Transfer amount",
+            message: nil,
+            preferredStyle: .alert)
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "amount"
+            textField.keyboardType = .decimalPad
+        }
+        
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+            guard let value = alertController.textFields?.first?.text else {
+                return
+            }
+            guard value.isNumeric else {
+                HUD.flash(.label("Please input valid amount"), delay: 0.8)
+                self?.showSendValueAlert()
+                return
+            }
+            self?.showSendConfirmAlert(with: value)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showSendConfirmAlert(with amount: String) {
+        let addresses = dataSource.map({ $0.address }).joined(separator: "\n")
+        let alertController = UIAlertController(
+            title: "Confirm",
+            message: "Are you sure you want to send the \(amount) BCH average to the address below? \n\n\(addresses)",
+            preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Sure", style: .default) { [weak self] action in
+            //is valid address
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 
