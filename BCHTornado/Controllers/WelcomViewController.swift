@@ -17,7 +17,7 @@ class HomeViewModel: ReceiveViewModel {
     
 }
 
-class ViewController: UIViewController {
+class WelcomViewController: UIViewController {
 
     @IBOutlet weak var assetDetailView: AssetDetailView!
     @IBOutlet weak var sendButtonTopConstraint: NSLayoutConstraint!
@@ -150,7 +150,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController {
+extension WelcomViewController {
     func requestToJoinGroup(with address: UserAddress, completationHandle: @escaping (Bool) -> Void) {
         let params = ["name": address.name,
                       "address": address.address]

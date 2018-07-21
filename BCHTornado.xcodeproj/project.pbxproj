@@ -12,8 +12,18 @@
 		473A74F1210356D8005A05CE /* BitboxApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 473A74F0210356D8005A05CE /* BitboxApi.m */; };
 		47C33F7FDE2FEA21758780AF /* Pods_BCHTornado.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03B90661507999D3A419451 /* Pods_BCHTornado.framework */; };
 		74F6FF6985F294B1A938BF97 /* Pods_BCHTornadoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090CB8C3933F53255B421778 /* Pods_BCHTornadoUITests.framework */; };
+		C83A44202103A879000F53E9 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A44122103A878000F53E9 /* TransferViewController.swift */; };
+		C83A44212103A879000F53E9 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A44132103A878000F53E9 /* ImportViewController.swift */; };
+		C83A44222103A879000F53E9 /* UserAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A44152103A878000F53E9 /* UserAddress.swift */; };
+		C83A44232103A879000F53E9 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A44162103A878000F53E9 /* ReceiveViewController.swift */; };
+		C83A44242103A879000F53E9 /* AddressInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A44172103A878000F53E9 /* AddressInfoTableCell.swift */; };
+		C83A44252103A879000F53E9 /* WelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A44182103A878000F53E9 /* WelcomViewController.swift */; };
+		C83A44262103A879000F53E9 /* AssetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A441A2103A878000F53E9 /* AssetDetailView.swift */; };
+		C83A44272103A879000F53E9 /* AssetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A441B2103A878000F53E9 /* AssetDetail.swift */; };
+		C83A44282103A879000F53E9 /* AssetDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C83A441C2103A878000F53E9 /* AssetDetailView.xib */; };
+		C83A44292103A879000F53E9 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A441E2103A878000F53E9 /* StoryboardLoadable.swift */; };
+		C83A442A2103A879000F53E9 /* XibableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A441F2103A878000F53E9 /* XibableView.swift */; };
 		C8E807A8210318FA0029C83C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807A7210318FA0029C83C /* AppDelegate.swift */; };
-		C8E807AA210318FA0029C83C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807A9210318FA0029C83C /* ViewController.swift */; };
 		C8E807AD210318FA0029C83C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8E807AB210318FA0029C83C /* Main.storyboard */; };
 		C8E807AF210318FC0029C83C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8E807AE210318FC0029C83C /* Assets.xcassets */; };
 		C8E807B2210318FC0029C83C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8E807B0210318FC0029C83C /* LaunchScreen.storyboard */; };
@@ -21,21 +31,11 @@
 		C8E807C8210318FC0029C83C /* BCHTornadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807C7210318FC0029C83C /* BCHTornadoUITests.swift */; };
 		C8E807DC21031D860029C83C /* CoreBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E807DB21031D860029C83C /* CoreBitcoin.framework */; };
 		C8E807DE21031E530029C83C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E807DD21031E530029C83C /* AVFoundation.framework */; };
-		C8E807E3210325BE0029C83C /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807E2210325BE0029C83C /* ReceiveViewController.swift */; };
-		C8E807E5210326180029C83C /* AddressInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807E4210326180029C83C /* AddressInfoTableCell.swift */; };
 		C8E807EF210338410029C83C /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807E8210338410029C83C /* Json.swift */; };
 		C8E807F1210338410029C83C /* TornadoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807EA210338410029C83C /* TornadoAPI.swift */; };
 		C8E807F2210338410029C83C /* TornadoApiManager+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807EB210338410029C83C /* TornadoApiManager+Reactive.swift */; };
 		C8E807F4210338410029C83C /* TornadoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807ED210338410029C83C /* TornadoManager.swift */; };
 		C8E807F621034C370029C83C /* JESONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807F521034C370029C83C /* JESONDecoder+Extension.swift */; };
-		C8FE34CC21036457004591E4 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34CB21036457004591E4 /* ImportViewController.swift */; };
-		C8FE34CE210367A8004591E4 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34CD210367A8004591E4 /* StoryboardLoadable.swift */; };
-		C8FE34D0210368CC004591E4 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34CF210368CC004591E4 /* TransferViewController.swift */; };
-		C8FE34D2210395FA004591E4 /* AssetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34D1210395FA004591E4 /* AssetDetailView.swift */; };
-		C8FE34D421039601004591E4 /* AssetDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8FE34D321039601004591E4 /* AssetDetailView.xib */; };
-		C8FE34D6210396EF004591E4 /* XibableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34D5210396EF004591E4 /* XibableView.swift */; };
-		C8FE34D821039AFD004591E4 /* AssetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34D721039AFD004591E4 /* AssetDetail.swift */; };
-		C8FE34DA21039B10004591E4 /* UserAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34D921039B10004591E4 /* UserAddress.swift */; };
 		CF2EC0E8D69B071360EE4F07 /* Pods_BCHTornadoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7495BDBDD7A09B0D228256E3 /* Pods_BCHTornadoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,9 +68,19 @@
 		7495BDBDD7A09B0D228256E3 /* Pods_BCHTornadoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BCHTornadoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CF17BA711F409250F47E14 /* Pods-BCHTornado.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornado.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornado/Pods-BCHTornado.debug.xcconfig"; sourceTree = "<group>"; };
 		B03B90661507999D3A419451 /* Pods_BCHTornado.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BCHTornado.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C83A44122103A878000F53E9 /* TransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		C83A44132103A878000F53E9 /* ImportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
+		C83A44152103A878000F53E9 /* UserAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddress.swift; sourceTree = "<group>"; };
+		C83A44162103A878000F53E9 /* ReceiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		C83A44172103A878000F53E9 /* AddressInfoTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressInfoTableCell.swift; sourceTree = "<group>"; };
+		C83A44182103A878000F53E9 /* WelcomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomViewController.swift; sourceTree = "<group>"; };
+		C83A441A2103A878000F53E9 /* AssetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetDetailView.swift; sourceTree = "<group>"; };
+		C83A441B2103A878000F53E9 /* AssetDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetDetail.swift; sourceTree = "<group>"; };
+		C83A441C2103A878000F53E9 /* AssetDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssetDetailView.xib; sourceTree = "<group>"; };
+		C83A441E2103A878000F53E9 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
+		C83A441F2103A878000F53E9 /* XibableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibableView.swift; sourceTree = "<group>"; };
 		C8E807A4210318FA0029C83C /* BCHTornado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCHTornado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E807A7210318FA0029C83C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C8E807A9210318FA0029C83C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C8E807AC210318FA0029C83C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C8E807AE210318FC0029C83C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8E807B1210318FC0029C83C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,21 +94,11 @@
 		C8E807D721031C540029C83C /* BCHTornado-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BCHTornado-Bridging-Header.h"; sourceTree = "<group>"; };
 		C8E807DB21031D860029C83C /* CoreBitcoin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreBitcoin.framework; sourceTree = "<group>"; };
 		C8E807DD21031E530029C83C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		C8E807E2210325BE0029C83C /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
-		C8E807E4210326180029C83C /* AddressInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoTableCell.swift; sourceTree = "<group>"; };
 		C8E807E8210338410029C83C /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		C8E807EA210338410029C83C /* TornadoAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TornadoAPI.swift; sourceTree = "<group>"; };
 		C8E807EB210338410029C83C /* TornadoApiManager+Reactive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TornadoApiManager+Reactive.swift"; sourceTree = "<group>"; };
 		C8E807ED210338410029C83C /* TornadoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TornadoManager.swift; sourceTree = "<group>"; };
 		C8E807F521034C370029C83C /* JESONDecoder+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JESONDecoder+Extension.swift"; sourceTree = "<group>"; };
-		C8FE34CB21036457004591E4 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
-		C8FE34CD210367A8004591E4 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
-		C8FE34CF210368CC004591E4 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
-		C8FE34D1210395FA004591E4 /* AssetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailView.swift; sourceTree = "<group>"; };
-		C8FE34D321039601004591E4 /* AssetDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetDetailView.xib; sourceTree = "<group>"; };
-		C8FE34D5210396EF004591E4 /* XibableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibableView.swift; sourceTree = "<group>"; };
-		C8FE34D721039AFD004591E4 /* AssetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetail.swift; sourceTree = "<group>"; };
-		C8FE34D921039B10004591E4 /* UserAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddress.swift; sourceTree = "<group>"; };
 		EE0F02AC04E3A469DAE166EC /* Pods-BCHTornado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornado.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornado/Pods-BCHTornado.release.xcconfig"; sourceTree = "<group>"; };
 		FC7D4F0AA147A903532DF18E /* Pods-BCHTornadoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornadoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornadoUITests/Pods-BCHTornadoUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +158,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C83A44112103A878000F53E9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C83A44182103A878000F53E9 /* WelcomViewController.swift */,
+				C83A44122103A878000F53E9 /* TransferViewController.swift */,
+				C83A44142103A878000F53E9 /* ReceiveViewController */,
+				C83A44132103A878000F53E9 /* ImportViewController.swift */,
+				C83A44192103A878000F53E9 /* Views */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C83A44142103A878000F53E9 /* ReceiveViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C83A44152103A878000F53E9 /* UserAddress.swift */,
+				C83A44162103A878000F53E9 /* ReceiveViewController.swift */,
+				C83A44172103A878000F53E9 /* AddressInfoTableCell.swift */,
+			);
+			path = ReceiveViewController;
+			sourceTree = "<group>";
+		};
+		C83A44192103A878000F53E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C83A441A2103A878000F53E9 /* AssetDetailView.swift */,
+				C83A441B2103A878000F53E9 /* AssetDetail.swift */,
+				C83A441C2103A878000F53E9 /* AssetDetailView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C83A441D2103A878000F53E9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C83A441E2103A878000F53E9 /* StoryboardLoadable.swift */,
+				C83A441F2103A878000F53E9 /* XibableView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		C8E8079B210318FA0029C83C = {
 			isa = PBXGroup;
 			children = (
@@ -184,17 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				C8E807A7210318FA0029C83C /* AppDelegate.swift */,
-				C8E807A9210318FA0029C83C /* ViewController.swift */,
-				C8FE34CB21036457004591E4 /* ImportViewController.swift */,
-				C8E807E2210325BE0029C83C /* ReceiveViewController.swift */,
-				C8E807E4210326180029C83C /* AddressInfoTableCell.swift */,
-				C8FE34CF210368CC004591E4 /* TransferViewController.swift */,
-				C8FE34CD210367A8004591E4 /* StoryboardLoadable.swift */,
-				C8FE34D1210395FA004591E4 /* AssetDetailView.swift */,
-				C8FE34D5210396EF004591E4 /* XibableView.swift */,
-				C8FE34D721039AFD004591E4 /* AssetDetail.swift */,
-				C8FE34D921039B10004591E4 /* UserAddress.swift */,
-				C8FE34D321039601004591E4 /* AssetDetailView.xib */,
+				C83A44112103A878000F53E9 /* Controllers */,
+				C83A441D2103A878000F53E9 /* Protocols */,
 				C8E807AB210318FA0029C83C /* Main.storyboard */,
 				C8E807E6210338410029C83C /* ApiManager */,
 				C8E807AE210318FC0029C83C /* Assets.xcassets */,
@@ -355,7 +387,7 @@
 			files = (
 				C8E807B2210318FC0029C83C /* LaunchScreen.storyboard in Resources */,
 				C8E807AF210318FC0029C83C /* Assets.xcassets in Resources */,
-				C8FE34D421039601004591E4 /* AssetDetailView.xib in Resources */,
+				C83A44282103A879000F53E9 /* AssetDetailView.xib in Resources */,
 				C8E807AD210318FA0029C83C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,25 +599,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C83A44272103A879000F53E9 /* AssetDetail.swift in Sources */,
 				473A74ED21032926005A05CE /* Wallet.swift in Sources */,
-				C8FE34D821039AFD004591E4 /* AssetDetail.swift in Sources */,
-				C8FE34CE210367A8004591E4 /* StoryboardLoadable.swift in Sources */,
-				C8FE34D6210396EF004591E4 /* XibableView.swift in Sources */,
-				C8E807AA210318FA0029C83C /* ViewController.swift in Sources */,
+				C83A44232103A879000F53E9 /* ReceiveViewController.swift in Sources */,
+				C83A44202103A879000F53E9 /* TransferViewController.swift in Sources */,
+				C83A44292103A879000F53E9 /* StoryboardLoadable.swift in Sources */,
+				C83A44242103A879000F53E9 /* AddressInfoTableCell.swift in Sources */,
 				C8E807F2210338410029C83C /* TornadoApiManager+Reactive.swift in Sources */,
 				C8E807F1210338410029C83C /* TornadoAPI.swift in Sources */,
 				C8E807F621034C370029C83C /* JESONDecoder+Extension.swift in Sources */,
-				C8E807E3210325BE0029C83C /* ReceiveViewController.swift in Sources */,
 				C8E807EF210338410029C83C /* Json.swift in Sources */,
-				C8FE34D0210368CC004591E4 /* TransferViewController.swift in Sources */,
+				C83A442A2103A879000F53E9 /* XibableView.swift in Sources */,
 				C8E807A8210318FA0029C83C /* AppDelegate.swift in Sources */,
-				C8FE34CC21036457004591E4 /* ImportViewController.swift in Sources */,
 				C8E807F4210338410029C83C /* TornadoManager.swift in Sources */,
-				C8FE34DA21039B10004591E4 /* UserAddress.swift in Sources */,
-				C8E807E5210326180029C83C /* AddressInfoTableCell.swift in Sources */,
+				C83A44212103A879000F53E9 /* ImportViewController.swift in Sources */,
+				C83A44222103A879000F53E9 /* UserAddress.swift in Sources */,
 				473A74EF2103376B005A05CE /* Mnemonic.swift in Sources */,
-				C8FE34D2210395FA004591E4 /* AssetDetailView.swift in Sources */,
 				473A74F1210356D8005A05CE /* BitboxApi.m in Sources */,
+				C83A44262103A879000F53E9 /* AssetDetailView.swift in Sources */,
+				C83A44252103A879000F53E9 /* WelcomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

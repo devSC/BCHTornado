@@ -25,7 +25,20 @@ class TransferViewController: UITableViewController, StoryboardLoadable {
             tableView.reloadData()
         }
     }
+    var sendButtonEnabled: Bool {
+        set {
+            sendButton.isEnabled = newValue
+            if newValue {
+                sendButton.backgroundColor = UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
+            }
+            else {
+                sendButton.backgroundColor = UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 0.7)
+            }
+        }
+        get { return sendButton.isEnabled }
+    }
     
+    @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var assetDetailView: AssetDetailView!
     var activity: UIActivityIndicatorView!
 
@@ -73,6 +86,7 @@ extension TransferViewController {
             .subscribe(onNext: { [weak self] assetDetail, source in
                 self?.assetDetailView.balanceLabel.text = assetDetail.balanceString
                 self?.dataSource = source
+                self?.sendButtonEnabled = !source.isEmpty
                 }, onError: { error in
                     
             })
