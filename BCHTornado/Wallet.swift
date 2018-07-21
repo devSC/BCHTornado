@@ -71,7 +71,7 @@ class Wallet {
     func sign(toValues: Array<ReceiveInfo>) throws -> BTCTransaction {
         let privateKey = getPrivateKey()!
         let key = BTCKey(privateKey: privateKey)
-        let fee: BTCAmount = 100
+        let fee: BTCAmount = 1000
         let (nilableTransaction, error) = transactionSpendingFrom(privateKey: privateKey,
                                                                   destinationAddressAmounts: toValues,
                                                                   changeAddress: key!.compressedPublicKeyAddress,
@@ -191,8 +191,8 @@ extension Wallet {
             
             spentCoins += txout.value
             
-            print("txhash: http://blockchain.info/rawtx/\(BTCHexFromData(txout.transactionHash))")
-            print("txhash: http://blockchain.info/rawtx/\(BTCHexFromData(BTCReversedData(txout.transactionHash))) (reversed)")
+            print("txhash: https://bch.btc.com/\(BTCHexFromData(txout.transactionHash)!)")
+            print("txhash: https://bch.btc.com/\(BTCHexFromData(BTCReversedData(txout.transactionHash))!) (reversed)")
         }
         
         print(String(format: "Total satoshis to spend:       %lld", spentCoins))
@@ -247,7 +247,8 @@ extension Wallet {
         let scriptMachine = BTCScriptMachine(transaction: tx, inputIndex: 0)
         do {
             let script = txouts.first?.script.copy() as! BTCScript
-            try scriptMachine?.verify(withOutputScript: script)
+            let result = try scriptMachine?.verify(withOutputScript: script)
+            print("self machine verified: \(result!)")
         } catch {
             print("error: \(error)")
             fatalError("verify failed")
