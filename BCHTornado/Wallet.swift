@@ -224,7 +224,8 @@ extension Wallet {
             let getHash: Data?
             
             do {
-                getHash = try tx.signatureHash(for: txout.script, inputIndex: UInt32(i), hashType: hashType)
+//                getHash = try tx.signatureHash(for: txout.script, inputIndex: UInt32(i), hashType: .SIGHASH_ALL)
+                getHash = try tx.signatureWitnessHash(for: txout.script, amount: txout.value, inputIndex: UInt32(i), hashType: .BCHSignatureHashTypeForkIDAll)
             } catch {
                 getHash = nil
                 errorOut = error
@@ -234,7 +235,7 @@ extension Wallet {
                 return (nil, errorOut)
             }
             
-            var signatureForScript = key.signature(forHash: hash, hashType: hashType)!
+            var signatureForScript = key.signature(forHash: hash, hashType: .BCHSignatureHashTypeForkIDAll)!
             sigScript.appendData(signatureForScript)
             sigScript.appendData(key.compressedPublicKey as Data)
             
@@ -244,15 +245,15 @@ extension Wallet {
         }
         
         // Validate the signatures before returning for extra measure.
-        let scriptMachine = BTCScriptMachine(transaction: tx, inputIndex: 0)
-        do {
-            let script = txouts.first?.script.copy() as! BTCScript
-            let result = try scriptMachine?.verify(withOutputScript: script)
-            print("self machine verified: \(result!)")
-        } catch {
-            print("error: \(error)")
-            fatalError("verify failed")
-        }
+//        let scriptMachine = BTCScriptMachine(transaction: tx, inputIndex: 0)
+//        do {
+//            let script = txouts.first?.script.copy() as! BTCScript
+//            let result = try scriptMachine?.verify(withOutputScript: script)
+//            print("self machine verified: \(result!)")
+//        } catch {
+//            print("error: \(error)")
+////            fatalError("verify failed")
+//        }
         return (tx, errorOut)
     }
 }
