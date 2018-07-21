@@ -12,9 +12,16 @@ import Result
 import KeychainSwift
 import BigInt
 
+class WalletManager {
+    static let `default` = WalletManager()
+    var wallets: [Wallet] = []
+    var haveValidWallet: Bool {
+        return !wallets.isEmpty
+    }
+}
+
 class Wallet {
     let keychain: BTCKeychain
-    
     
     var mainAddress: String {
         return keychain.key.compressedPublicKeyAddress.string

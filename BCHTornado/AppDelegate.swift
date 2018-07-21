@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let titleAttributes: [NSAttributedStringKey : Any] = [
+            NSAttributedStringKey.font: UIFont(name: "Avenir Next Medium", size: 20)!,
+            NSAttributedStringKey.foregroundColor: UIColor.blue
+        ]
+        UIBarButtonItem.appearance().setTitleTextAttributes(titleAttributes, for: .application)
         return true
     }
 

@@ -12,6 +12,9 @@ import Alamofire
 
 public enum Tornado {
     case balance(address: String)
+    case group
+    case join([String: Any])
+    case groupPeople
 }
 
 extension Tornado: TargetType {
@@ -20,24 +23,30 @@ extension Tornado: TargetType {
         case .balance:
             return URL(string: "https://rest.bitbox.earth/v1")!
         default:
-            return URL(string: "http://http://127.0.0.1/:3000")!
+            return URL(string: "http://127.0.0.1:3000")!
         }
     }
     
     public var path: String {
         switch self {
         case .balance(let address):
-            return "/address/details/bitcoincash:\(address)"
+            return "/address/details/\(address)"
+        case .group:
+            return "/group"
+        case .join:
+            return "/group/join"
+        case .groupPeople:
+            return "/group/people"
         }
     }
     
     public var method: Moya.Method {
-//        switch self {
-//        case .balance:
-//            return .get
-//        default:
+        switch self {
+//        case .join:
+//            return .post
+        default:
             return .get
-//        }
+        }
     }
     
     private var bodyEncoding: URLEncoding {
@@ -50,10 +59,11 @@ extension Tornado: TargetType {
     
     public var task: Task {
         switch self {
-//        case .balance(let params):
+        case .join(let params):
+            return .requestParameters(parameters: params, encoding: queryStringEncoding) //query string
 //             return .requestParameters(parameters: params, encoding: bodyEncoding) //body
             //        case .(let params),
-        //            return .requestParameters(parameters: params, encoding: queryStringEncoding) //query string
+//                    return .requestParameters(parameters: params, encoding: queryStringEncoding) //query string
         default:
             return .requestPlain
         }

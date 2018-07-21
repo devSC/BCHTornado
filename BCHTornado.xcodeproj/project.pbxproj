@@ -28,6 +28,14 @@
 		C8E807F2210338410029C83C /* TornadoApiManager+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807EB210338410029C83C /* TornadoApiManager+Reactive.swift */; };
 		C8E807F4210338410029C83C /* TornadoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807ED210338410029C83C /* TornadoManager.swift */; };
 		C8E807F621034C370029C83C /* JESONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807F521034C370029C83C /* JESONDecoder+Extension.swift */; };
+		C8FE34CC21036457004591E4 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34CB21036457004591E4 /* ImportViewController.swift */; };
+		C8FE34CE210367A8004591E4 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34CD210367A8004591E4 /* StoryboardLoadable.swift */; };
+		C8FE34D0210368CC004591E4 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34CF210368CC004591E4 /* TransferViewController.swift */; };
+		C8FE34D2210395FA004591E4 /* AssetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34D1210395FA004591E4 /* AssetDetailView.swift */; };
+		C8FE34D421039601004591E4 /* AssetDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8FE34D321039601004591E4 /* AssetDetailView.xib */; };
+		C8FE34D6210396EF004591E4 /* XibableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34D5210396EF004591E4 /* XibableView.swift */; };
+		C8FE34D821039AFD004591E4 /* AssetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34D721039AFD004591E4 /* AssetDetail.swift */; };
+		C8FE34DA21039B10004591E4 /* UserAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE34D921039B10004591E4 /* UserAddress.swift */; };
 		CF2EC0E8D69B071360EE4F07 /* Pods_BCHTornadoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7495BDBDD7A09B0D228256E3 /* Pods_BCHTornadoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +91,14 @@
 		C8E807EB210338410029C83C /* TornadoApiManager+Reactive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TornadoApiManager+Reactive.swift"; sourceTree = "<group>"; };
 		C8E807ED210338410029C83C /* TornadoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TornadoManager.swift; sourceTree = "<group>"; };
 		C8E807F521034C370029C83C /* JESONDecoder+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JESONDecoder+Extension.swift"; sourceTree = "<group>"; };
+		C8FE34CB21036457004591E4 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
+		C8FE34CD210367A8004591E4 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
+		C8FE34CF210368CC004591E4 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		C8FE34D1210395FA004591E4 /* AssetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetailView.swift; sourceTree = "<group>"; };
+		C8FE34D321039601004591E4 /* AssetDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetDetailView.xib; sourceTree = "<group>"; };
+		C8FE34D5210396EF004591E4 /* XibableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibableView.swift; sourceTree = "<group>"; };
+		C8FE34D721039AFD004591E4 /* AssetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetail.swift; sourceTree = "<group>"; };
+		C8FE34D921039B10004591E4 /* UserAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddress.swift; sourceTree = "<group>"; };
 		EE0F02AC04E3A469DAE166EC /* Pods-BCHTornado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornado.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornado/Pods-BCHTornado.release.xcconfig"; sourceTree = "<group>"; };
 		FC7D4F0AA147A903532DF18E /* Pods-BCHTornadoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornadoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornadoUITests/Pods-BCHTornadoUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,8 +185,16 @@
 			children = (
 				C8E807A7210318FA0029C83C /* AppDelegate.swift */,
 				C8E807A9210318FA0029C83C /* ViewController.swift */,
+				C8FE34CB21036457004591E4 /* ImportViewController.swift */,
 				C8E807E2210325BE0029C83C /* ReceiveViewController.swift */,
 				C8E807E4210326180029C83C /* AddressInfoTableCell.swift */,
+				C8FE34CF210368CC004591E4 /* TransferViewController.swift */,
+				C8FE34CD210367A8004591E4 /* StoryboardLoadable.swift */,
+				C8FE34D1210395FA004591E4 /* AssetDetailView.swift */,
+				C8FE34D5210396EF004591E4 /* XibableView.swift */,
+				C8FE34D721039AFD004591E4 /* AssetDetail.swift */,
+				C8FE34D921039B10004591E4 /* UserAddress.swift */,
+				C8FE34D321039601004591E4 /* AssetDetailView.xib */,
 				C8E807AB210318FA0029C83C /* Main.storyboard */,
 				C8E807E6210338410029C83C /* ApiManager */,
 				C8E807AE210318FC0029C83C /* Assets.xcassets */,
@@ -331,6 +355,7 @@
 			files = (
 				C8E807B2210318FC0029C83C /* LaunchScreen.storyboard in Resources */,
 				C8E807AF210318FC0029C83C /* Assets.xcassets in Resources */,
+				C8FE34D421039601004591E4 /* AssetDetailView.xib in Resources */,
 				C8E807AD210318FA0029C83C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,16 +568,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				473A74ED21032926005A05CE /* Wallet.swift in Sources */,
+				C8FE34D821039AFD004591E4 /* AssetDetail.swift in Sources */,
+				C8FE34CE210367A8004591E4 /* StoryboardLoadable.swift in Sources */,
+				C8FE34D6210396EF004591E4 /* XibableView.swift in Sources */,
 				C8E807AA210318FA0029C83C /* ViewController.swift in Sources */,
 				C8E807F2210338410029C83C /* TornadoApiManager+Reactive.swift in Sources */,
 				C8E807F1210338410029C83C /* TornadoAPI.swift in Sources */,
 				C8E807F621034C370029C83C /* JESONDecoder+Extension.swift in Sources */,
 				C8E807E3210325BE0029C83C /* ReceiveViewController.swift in Sources */,
 				C8E807EF210338410029C83C /* Json.swift in Sources */,
+				C8FE34D0210368CC004591E4 /* TransferViewController.swift in Sources */,
 				C8E807A8210318FA0029C83C /* AppDelegate.swift in Sources */,
+				C8FE34CC21036457004591E4 /* ImportViewController.swift in Sources */,
 				C8E807F4210338410029C83C /* TornadoManager.swift in Sources */,
+				C8FE34DA21039B10004591E4 /* UserAddress.swift in Sources */,
 				C8E807E5210326180029C83C /* AddressInfoTableCell.swift in Sources */,
 				473A74EF2103376B005A05CE /* Mnemonic.swift in Sources */,
+				C8FE34D2210395FA004591E4 /* AssetDetailView.swift in Sources */,
 				473A74F1210356D8005A05CE /* BitboxApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
