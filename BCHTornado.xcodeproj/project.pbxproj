@@ -16,6 +16,8 @@
 		C8E807B2210318FC0029C83C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8E807B0210318FC0029C83C /* LaunchScreen.storyboard */; };
 		C8E807BD210318FC0029C83C /* BCHTornadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807BC210318FC0029C83C /* BCHTornadoTests.swift */; };
 		C8E807C8210318FC0029C83C /* BCHTornadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807C7210318FC0029C83C /* BCHTornadoUITests.swift */; };
+		C8E807DC21031D860029C83C /* CoreBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E807DB21031D860029C83C /* CoreBitcoin.framework */; };
+		C8E807DE21031E530029C83C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E807DD21031E530029C83C /* AVFoundation.framework */; };
 		CF2EC0E8D69B071360EE4F07 /* Pods_BCHTornadoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7495BDBDD7A09B0D228256E3 /* Pods_BCHTornadoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,9 @@
 		C8E807C3210318FC0029C83C /* BCHTornadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCHTornadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E807C7210318FC0029C83C /* BCHTornadoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCHTornadoUITests.swift; sourceTree = "<group>"; };
 		C8E807C9210318FC0029C83C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8E807D721031C540029C83C /* BCHTornado-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BCHTornado-Bridging-Header.h"; sourceTree = "<group>"; };
+		C8E807DB21031D860029C83C /* CoreBitcoin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreBitcoin.framework; sourceTree = "<group>"; };
+		C8E807DD21031E530029C83C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EE0F02AC04E3A469DAE166EC /* Pods-BCHTornado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornado.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornado/Pods-BCHTornado.release.xcconfig"; sourceTree = "<group>"; };
 		FC7D4F0AA147A903532DF18E /* Pods-BCHTornadoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornadoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornadoUITests/Pods-BCHTornadoUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8E807DE21031E530029C83C /* AVFoundation.framework in Frameworks */,
+				C8E807DC21031D860029C83C /* CoreBitcoin.framework in Frameworks */,
 				47C33F7FDE2FEA21758780AF /* Pods_BCHTornado.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +112,8 @@
 		79D4C00F238A4C259EB0EF1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8E807DD21031E530029C83C /* AVFoundation.framework */,
+				C8E807DB21031D860029C83C /* CoreBitcoin.framework */,
 				B03B90661507999D3A419451 /* Pods_BCHTornado.framework */,
 				7495BDBDD7A09B0D228256E3 /* Pods_BCHTornadoTests.framework */,
 				090CB8C3933F53255B421778 /* Pods_BCHTornadoUITests.framework */,
@@ -143,6 +152,7 @@
 				C8E807AE210318FC0029C83C /* Assets.xcassets */,
 				C8E807B0210318FC0029C83C /* LaunchScreen.storyboard */,
 				C8E807B3210318FC0029C83C /* Info.plist */,
+				C8E807D721031C540029C83C /* BCHTornado-Bridging-Header.h */,
 			);
 			path = BCHTornado;
 			sourceTree = "<group>";
@@ -242,6 +252,7 @@
 				TargetAttributes = {
 					C8E807A3210318FA0029C83C = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					C8E807B7210318FC0029C83C = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -666,14 +677,25 @@
 			baseConfigurationReference = A4CF17BA711F409250F47E14 /* Pods-BCHTornado.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCWWM3NKJ6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BCHTornado/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hufubit.BCHTornado;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BCHTornado/BCHTornado-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/CoreBitcoin.framework\"";
 			};
 			name = Debug;
 		};
@@ -682,14 +704,24 @@
 			baseConfigurationReference = EE0F02AC04E3A469DAE166EC /* Pods-BCHTornado.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCWWM3NKJ6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BCHTornado/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hufubit.BCHTornado;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BCHTornado/BCHTornado-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/CoreBitcoin.framework\"";
 			};
 			name = Release;
 		};
@@ -702,7 +734,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCWWM3NKJ6;
 				INFOPLIST_FILE = BCHTornadoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hufubit.BCHTornadoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -720,7 +756,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCWWM3NKJ6;
 				INFOPLIST_FILE = BCHTornadoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hufubit.BCHTornadoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -737,7 +777,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCWWM3NKJ6;
 				INFOPLIST_FILE = BCHTornadoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hufubit.BCHTornadoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -754,7 +798,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCWWM3NKJ6;
 				INFOPLIST_FILE = BCHTornadoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hufubit.BCHTornadoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
