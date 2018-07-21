@@ -18,6 +18,13 @@
 		C8E807C8210318FC0029C83C /* BCHTornadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807C7210318FC0029C83C /* BCHTornadoUITests.swift */; };
 		C8E807DC21031D860029C83C /* CoreBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E807DB21031D860029C83C /* CoreBitcoin.framework */; };
 		C8E807DE21031E530029C83C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E807DD21031E530029C83C /* AVFoundation.framework */; };
+		C8E807E3210325BE0029C83C /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807E2210325BE0029C83C /* ReceiveViewController.swift */; };
+		C8E807E5210326180029C83C /* AddressInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807E4210326180029C83C /* AddressInfoTableCell.swift */; };
+		C8E807EF210338410029C83C /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807E8210338410029C83C /* Json.swift */; };
+		C8E807F1210338410029C83C /* TornadoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807EA210338410029C83C /* TornadoAPI.swift */; };
+		C8E807F2210338410029C83C /* TornadoApiManager+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807EB210338410029C83C /* TornadoApiManager+Reactive.swift */; };
+		C8E807F4210338410029C83C /* TornadoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807ED210338410029C83C /* TornadoManager.swift */; };
+		C8E807F621034C370029C83C /* JESONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E807F521034C370029C83C /* JESONDecoder+Extension.swift */; };
 		CF2EC0E8D69B071360EE4F07 /* Pods_BCHTornadoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7495BDBDD7A09B0D228256E3 /* Pods_BCHTornadoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +69,13 @@
 		C8E807D721031C540029C83C /* BCHTornado-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BCHTornado-Bridging-Header.h"; sourceTree = "<group>"; };
 		C8E807DB21031D860029C83C /* CoreBitcoin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreBitcoin.framework; sourceTree = "<group>"; };
 		C8E807DD21031E530029C83C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C8E807E2210325BE0029C83C /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		C8E807E4210326180029C83C /* AddressInfoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInfoTableCell.swift; sourceTree = "<group>"; };
+		C8E807E8210338410029C83C /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
+		C8E807EA210338410029C83C /* TornadoAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TornadoAPI.swift; sourceTree = "<group>"; };
+		C8E807EB210338410029C83C /* TornadoApiManager+Reactive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TornadoApiManager+Reactive.swift"; sourceTree = "<group>"; };
+		C8E807ED210338410029C83C /* TornadoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TornadoManager.swift; sourceTree = "<group>"; };
+		C8E807F521034C370029C83C /* JESONDecoder+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JESONDecoder+Extension.swift"; sourceTree = "<group>"; };
 		EE0F02AC04E3A469DAE166EC /* Pods-BCHTornado.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornado.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornado/Pods-BCHTornado.release.xcconfig"; sourceTree = "<group>"; };
 		FC7D4F0AA147A903532DF18E /* Pods-BCHTornadoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BCHTornadoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BCHTornadoUITests/Pods-BCHTornadoUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,7 +162,10 @@
 			children = (
 				C8E807A7210318FA0029C83C /* AppDelegate.swift */,
 				C8E807A9210318FA0029C83C /* ViewController.swift */,
+				C8E807E2210325BE0029C83C /* ReceiveViewController.swift */,
+				C8E807E4210326180029C83C /* AddressInfoTableCell.swift */,
 				C8E807AB210318FA0029C83C /* Main.storyboard */,
+				C8E807E6210338410029C83C /* ApiManager */,
 				C8E807AE210318FC0029C83C /* Assets.xcassets */,
 				C8E807B0210318FC0029C83C /* LaunchScreen.storyboard */,
 				C8E807B3210318FC0029C83C /* Info.plist */,
@@ -173,6 +190,18 @@
 				C8E807C9210318FC0029C83C /* Info.plist */,
 			);
 			path = BCHTornadoUITests;
+			sourceTree = "<group>";
+		};
+		C8E807E6210338410029C83C /* ApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				C8E807E8210338410029C83C /* Json.swift */,
+				C8E807EA210338410029C83C /* TornadoAPI.swift */,
+				C8E807EB210338410029C83C /* TornadoApiManager+Reactive.swift */,
+				C8E807ED210338410029C83C /* TornadoManager.swift */,
+				C8E807F521034C370029C83C /* JESONDecoder+Extension.swift */,
+			);
+			path = ApiManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,7 +532,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8E807AA210318FA0029C83C /* ViewController.swift in Sources */,
+				C8E807F2210338410029C83C /* TornadoApiManager+Reactive.swift in Sources */,
+				C8E807F1210338410029C83C /* TornadoAPI.swift in Sources */,
+				C8E807F621034C370029C83C /* JESONDecoder+Extension.swift in Sources */,
+				C8E807E3210325BE0029C83C /* ReceiveViewController.swift in Sources */,
+				C8E807EF210338410029C83C /* Json.swift in Sources */,
 				C8E807A8210318FA0029C83C /* AppDelegate.swift in Sources */,
+				C8E807F4210338410029C83C /* TornadoManager.swift in Sources */,
+				C8E807E5210326180029C83C /* AddressInfoTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
