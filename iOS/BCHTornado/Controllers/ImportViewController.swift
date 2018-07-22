@@ -36,11 +36,11 @@ class ImportViewController: UIViewController, StoryboardLoadable {
     @IBAction func confirmButtonAction(_ sender: Any) {
         //enter
         #if DEBUG
-        let mnemonic = commonMnemonic
+        let mnemonic: String? = commonMnemonic
         #else
-        let mnemonic = textView.text
+        let mnemonic: String? = textView.text
         #endif
-        if Mnemonic.checkIsValid(mnemonic) {
+        if let mnemonic = mnemonic, Mnemonic.checkIsValid(mnemonic) {
             let wallet = Wallet(mnemonic: mnemonic.trimmed)
             WalletManager.default.wallets.append(wallet)
             
