@@ -11,13 +11,13 @@ import RxCocoa
 import RxSwift
 
 class ReceiveViewModel {
-//    var assetDetailObservable: BehaviorRelay<AssetDetail?> = BehaviorRelay(value: nil)
     var address: String!
     let disposeBag = DisposeBag()
     var isRequestActiveObservable = BehaviorRelay(value: false)
     
-    func requestBalance() -> Observable<AssetDetail> {
-        return TornadoApiManager.default.rx.request(.balance(address: self.address))
+    func requestBalance(_ address: String? = nil) -> Observable<AssetDetail> {
+        let address = address ?? self.address
+        return TornadoApiManager.default.rx.request(.balance(address: address!))
             .map { try JSONDecoder().decodeAnyData(AssetDetail.self, from: $0.jsonObj) }
     }
     

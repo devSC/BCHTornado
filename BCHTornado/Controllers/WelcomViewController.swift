@@ -14,7 +14,11 @@ import PKHUD
 let commonMnemonic = "person muscle liquid chief retire cram suggest advice spend fresh lava soup"
 
 class HomeViewModel: ReceiveViewModel {
-    
+    func requestCheckAddress(_ address: String) -> Observable<String?> {
+        return requestBalance(address)
+            .map { $0.legacyAddress }
+            .catchErrorJustReturn(nil)
+    }
 }
 
 class WelcomViewController: UIViewController {
@@ -86,7 +90,6 @@ class WelcomViewController: UIViewController {
     }
     
     func requestToJoinGroup(with address: UserAddress) {
-        HUD.show(.progress)
         requestToJoinGroup(with: address) { [weak self] success in
             HUD.hide()
             if success {
@@ -113,14 +116,14 @@ class WelcomViewController: UIViewController {
         alertController.addTextField { textField in
             textField.tag = nameFieldTag
             textField.placeholder = "name"
-            textField.text = "Wilson"
+//            textField.text = "Wilson"
         }
         
         let addressFieldTag = 3
         alertController.addTextField { textField in
             textField.tag = addressFieldTag
             textField.placeholder = "bch address"
-            textField.text = "1Nkt7pcEtdw9DhqvuEU3dPQe7EqAmT4P3y"
+//            textField.text = "1Nkt7pcEtdw9DhqvuEU3dPQe7EqAmT4P3y"
         }
         
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
@@ -138,14 +141,7 @@ class WelcomViewController: UIViewController {
                 self?.showAddressAlertController()
                 return
             }
-            //is valid address
-            let isValidAddress = !address.isEmpty
-            if isValidAddress {
-                self?.requestToJoinGroup(with: UserAddress(name: name, address: address))
-            }
-            else {
-                HUD.flash(.label("Incorrect Bitcoin cash address"), delay: 0.8)
-            }
+            self?.requestToCheckValidAddress(name, address: address)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
         alertController.addAction(cancelAction)
@@ -177,6 +173,23 @@ extension WelcomViewController {
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] detail in
                 self?.assetDetailView.balance = detail.balanceString
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func requestToCheckValidAddress(_ name: String, address: String) {
+        HUD.show(.progress)
+        self.viewModel.requestCheckAddress(address)
+            .subscribeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] legacyAddress in
+                if let address = legacyAddress {
+                    //is valid address
+                    self?.requestToJoinGroup(with: UserAddress(name: name, address: address))
+                }
+                else {
+                    HUD.hide()
+                    HUD.flash(.label("Incorrect Bitcoin cash address"), delay: 0.8)
+                }
             })
             .disposed(by: disposeBag)
     }

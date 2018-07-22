@@ -27,7 +27,7 @@ class ImportViewController: UIViewController, StoryboardLoadable {
         
         //test
 //        let mnemonic = Mnemonic(passphrase: nil).wordsString
-        textView.text = "b*** a*** c**** d**** e**** f**** h**** g**** o**** p**** e**** g****"
+//        textView.text = "b*** a*** c**** d**** e**** f**** h**** g**** o**** p**** e**** g****"
     }
 
     @IBAction func confirmButtonAction(_ sender: Any) {

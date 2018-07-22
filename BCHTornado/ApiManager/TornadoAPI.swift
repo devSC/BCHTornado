@@ -24,7 +24,7 @@ extension Tornado: TargetType {
         case .balance:
             return URL(string: "https://rest.bitbox.earth/v1")!
         default:
-            return URL(string: "http://127.0.0.1:3000")!
+            return URL(string: "http://10.0.52.57:3000")!
         }
     }
     

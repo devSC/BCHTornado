@@ -78,7 +78,7 @@ class Wallet {
     func sign(toValues: Array<ReceiveInfo>) throws -> BTCTransaction {
         let privateKey = getPrivateKey()!
         let key = BTCKey(privateKey: privateKey)
-        let fee: BTCAmount = 1000
+        let fee: BTCAmount = 3000
         let (nilableTransaction, error) = transactionSpendingFrom(privateKey: privateKey,
                                                                   destinationAddressAmounts: toValues,
                                                                   changeAddress: key!.compressedPublicKeyAddress,
