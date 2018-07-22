@@ -105,11 +105,19 @@ class Wallet {
     }
     
     func formatterToUnitString(value: BigUInt) -> String {
-        return AssetNumberFormatter.formatToUnits(for: type, amount: value, decimals: 8)
+        let numberFormatter = BTCNumberFormatter(bitcoinUnit: .BTC)
+        guard let stringValue = numberFormatter?.string(fromAmount: BTCAmount(value)) else {
+            return "0"
+        }
+        return stringValue
     }
     
     func parseToBigUInt(value: String) -> BigUInt {
-        return AssetNumberFormatter.parseToBigUInt(for: type, amount: value) ?? BigUInt(0)
+        let numberFormatter = BTCNumberFormatter(bitcoinUnit: .BTC)
+        guard let intValue = numberFormatter?.amount(from: value) else {
+            return BigUInt(0)
+        }
+        return BigUInt(intValue)
     }
 }
 
