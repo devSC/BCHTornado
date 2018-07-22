@@ -115,7 +115,7 @@ class WelcomViewController: UIViewController {
         alertController.addTextField { textField in
             textField.tag = addressFieldTag
             textField.placeholder = "bch address"
-            textField.text = "17Qp9DRhgZvEqM9waX88QkGU9g86ABY5uc"
+            textField.text = "1Nkt7pcEtdw9DhqvuEU3dPQe7EqAmT4P3y"
         }
         
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in

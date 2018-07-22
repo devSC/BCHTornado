@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import BCHTornado
+import BigInt
 
 class BCHTornadoTests: XCTestCase {
     
@@ -24,6 +25,12 @@ class BCHTornadoTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let numberFormatter = BTCNumberFormatter(bitcoinUnit: .BTC)
+        print(numberFormatter?.amount(from: "0.02"))
+        let amount = BigUInt(numberFormatter!.amount(from: "0.02"))
+        XCTAssertEqual(amount, BigUInt(2000000))
+        let averageValue = amount.quotientAndRemainder(dividingBy: BigUInt(3))
+        print(averageValue)
     }
     
     func testPerformanceExample() {

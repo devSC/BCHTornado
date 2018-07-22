@@ -15,7 +15,7 @@ struct AssetDetail: Codable {
     let totalReceivedSat: Int
     let totalSent: Double
     let totalSentSat: Int
-    let unconfirmedBalance: Int
+    let unconfirmedBalance: Double
     let unconfirmedBalanceSat: Int
     let unconfirmedTxApperances: Int
     let txApperances: Int

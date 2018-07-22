@@ -11,6 +11,8 @@ import RxCocoa
 import RxSwift
 import SwifterSwift
 import PKHUD
+import BigInt
+import CryptoSwift
 
 class TransferViewModel: ReceiveViewModel {
     
@@ -22,6 +24,7 @@ class TransferViewController: UITableViewController, StoryboardLoadable {
     let viewModel = TransferViewModel()
     let disposeBag = DisposeBag()
     let wallet: Wallet = WalletManager.default.wallets.first!
+    var assetDetail: AssetDetail!
     var dataSource: [UserAddress] = [] {
         didSet {
             tableView.reloadData()
@@ -111,18 +114,62 @@ class TransferViewController: UITableViewController, StoryboardLoadable {
     
     func showSendConfirmAlert(with amount: String) {
         let addresses = dataSource.map({ $0.address }).joined(separator: "\n")
+        let amountValue = wallet.parseToBigUInt(value: amount)
+        //average
+        let userCount = dataSource.count
+        let (averageValue, _) = amountValue.quotientAndRemainder(dividingBy: BigUInt(userCount))
+        let averageString = wallet.formatterToUnitString(value: averageValue)
         let alertController = UIAlertController(
             title: "Confirm",
-            message: "Are you sure you want to send the \(amount) BCH average to the address below? \n\n\(addresses)",
+            message: "Are you sure you want to send the \(amount) BCH average to the address below? \n\n\(addresses)\n\n(\(averageString) bitcoin cash/per)",
             preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Sure", style: .default) { [weak self] action in
             //is valid address
+            self?.sendPayment(with: amount)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
         alertController.addAction(cancelAction)
         alertController.addAction(confirmAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func sendPayment(with amount: String) {
+        
+        HUD.show(.progress)
+        
+        let amount = wallet.parseToBigUInt(value: amount)
+        //average
+        let userCount = dataSource.count
+        let (averageValue, _) = amount.quotientAndRemainder(dividingBy: BigUInt(userCount))
+        let receivers = dataSource.map { ReceiveInfo(address: $0.address, amount: BigInt(averageValue)) }
+        let tx: BTCTransaction
+        do {
+            tx = try wallet.sign(toValues: receivers)
+        } catch {
+            print("error: \(error)")
+            HUD.flash(.labeledError(title: "Opps... sign transaction error", subtitle: nil), delay: 0.8)
+            return
+        }
+        
+        let rawTxData = tx.data.toHexString()
+        print(rawTxData)
+        
+        let request = BitboxApi().requestForTransactionBroadcast(with: tx.data)
+        let task = URLSession.shared.dataTask(with: request as! URLRequest) { [weak self] (data, response, error) in
+            DispatchQueue.main.async {
+                if error != nil {
+                    print(error.debugDescription)
+                    HUD.flash(.labeledError(title: error.debugDescription, subtitle: nil), delay: 0.8)
+                }else{
+                    let str = String(data: data!, encoding: String.Encoding.utf8)
+                    print(str ?? "")
+                    HUD.flash(.labeledSuccess(title: " Send successfully ", subtitle: str), delay: 0.8)
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }
+        } as URLSessionTask
+        task.resume()
     }
 }
 
@@ -134,6 +181,7 @@ extension TransferViewController {
             .subscribe(onNext: { [weak self] assetDetail, source in
                 self?.assetDetailView.balanceLabel.text = assetDetail.balanceString
                 self?.dataSource = source
+                self?.assetDetail = assetDetail
                 self?.sendButtonEnabled = !source.isEmpty
                 }, onError: { error in
                     
