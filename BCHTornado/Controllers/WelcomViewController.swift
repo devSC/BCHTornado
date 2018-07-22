@@ -77,7 +77,12 @@ class WelcomViewController: UIViewController {
     
     @IBAction func receiveAction(_ sender: Any) {
         //show alert view
-        showAddressAlertController()
+        if let wallet = WalletManager.default.wallets.first {
+            requestToJoinGroup(with: UserAddress(name: "Tornado", address: wallet.mainAddress))
+        }
+        else {
+            showAddressAlertController()
+        }
     }
     
     func requestToJoinGroup(with address: UserAddress) {
@@ -171,7 +176,7 @@ extension WelcomViewController {
         viewModel.requestBalance()
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] detail in
-                self?.assetDetailView.balanceLabel.text = detail.balanceString
+                self?.assetDetailView.balance = detail.balanceString
             })
             .disposed(by: disposeBag)
     }

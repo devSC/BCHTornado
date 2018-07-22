@@ -179,10 +179,11 @@ extension TransferViewController {
         viewModel.startRequestSchedule()
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] assetDetail, source in
-                self?.assetDetailView.balanceLabel.text = assetDetail.balanceString
+                self?.assetDetailView.balance = assetDetail.balanceString
                 self?.dataSource = source
                 self?.assetDetail = assetDetail
                 self?.sendButtonEnabled = !source.isEmpty
+                self?.title = source.isEmpty ? "Transfer (waiting people...)" : "Transfer"
                 }, onError: { error in
                     
             })

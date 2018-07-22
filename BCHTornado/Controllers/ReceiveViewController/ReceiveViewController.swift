@@ -43,6 +43,15 @@ class ReceiveViewModel {
                 self?.isRequestActiveObservable.accept(false)
                 })
     }
+    
+    func requestToRemoveGroup(address: UserAddress) {
+        let params = ["name": address.name,
+                      "address": address.address]
+        _ = TornadoApiManager.default.rx.request(.groupQuit(params))
+            .subscribe(onNext: { json in
+                print(json.jsonObj)
+            })
+    }
 }
 
 class ReceiveViewController: UITableViewController {
@@ -62,6 +71,11 @@ class ReceiveViewController: UITableViewController {
     
     var activity: UIActivityIndicatorView!
     @IBOutlet weak var assetDetailView: AssetDetailView!
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.requestToRemoveGroup(address: address)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +114,7 @@ extension ReceiveViewController {
         viewModel.startRequestSchedule()
             .subscribeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] assetDetail, source in
-                self?.assetDetailView.balanceLabel.text = assetDetail.balanceString
+                self?.assetDetailView.balance = assetDetail.balanceString
                 self?.dataSource = source
                 }, onError: { [weak self] error in
                 self?.activity.stopAnimating()

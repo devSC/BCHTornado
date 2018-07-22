@@ -15,6 +15,7 @@ public enum Tornado {
     case group
     case join([String: Any])
     case groupPeople
+    case groupQuit([String: Any])
 }
 
 extension Tornado: TargetType {
@@ -37,6 +38,8 @@ extension Tornado: TargetType {
             return "/group/join"
         case .groupPeople:
             return "/group/people"
+        case .groupQuit:
+            return "/group/quit"
         }
     }
     
@@ -59,11 +62,8 @@ extension Tornado: TargetType {
     
     public var task: Task {
         switch self {
-        case .join(let params):
+        case .join(let params), .groupQuit(let params):
             return .requestParameters(parameters: params, encoding: queryStringEncoding) //query string
-//             return .requestParameters(parameters: params, encoding: bodyEncoding) //body
-            //        case .(let params),
-//                    return .requestParameters(parameters: params, encoding: queryStringEncoding) //query string
         default:
             return .requestPlain
         }

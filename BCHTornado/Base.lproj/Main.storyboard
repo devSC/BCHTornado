@@ -254,10 +254,10 @@
             </objects>
             <point key="canvasLocation" x="1797.5999999999999" y="-920.68965517241384"/>
         </scene>
-        <!--Transfer-->
+        <!--Transfer (waiting people...)-->
         <scene sceneID="pcM-3P-xb8">
             <objects>
-                <tableViewController storyboardIdentifier="TransferViewController" title="Transfer" id="gob-fs-8tR" customClass="TransferViewController" customModule="BCHTornado" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TransferViewController" title="Transfer (waiting people...)" id="gob-fs-8tR" customClass="TransferViewController" customModule="BCHTornado" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="7R8-YO-1Xl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

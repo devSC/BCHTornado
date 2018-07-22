@@ -27,12 +27,12 @@ class ImportViewController: UIViewController, StoryboardLoadable {
         
         //test
 //        let mnemonic = Mnemonic(passphrase: nil).wordsString
-        textView.text = commonMnemonic
+        textView.text = "b*** a*** c**** d**** e**** f**** h**** g**** o**** p**** e**** g****"
     }
 
     @IBAction func confirmButtonAction(_ sender: Any) {
         //enter
-        let wallet = Wallet(mnemonic: textView.text.trimmed)
+        let wallet = Wallet(mnemonic: commonMnemonic.trimmed)
         WalletManager.default.wallets.append(wallet)
         
         //to transfer controller
