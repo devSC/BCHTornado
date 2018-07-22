@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ImportViewController: UIViewController, StoryboardLoadable {
 
@@ -27,17 +28,29 @@ class ImportViewController: UIViewController, StoryboardLoadable {
         
         //test
 //        let mnemonic = Mnemonic(passphrase: nil).wordsString
-//        textView.text = "b*** a*** c**** d**** e**** f**** h**** g**** o**** p**** e**** g****"
+        #if DEBUG
+        textView.text = "b*** a*** c**** d**** e**** f**** h**** g**** o**** p**** e**** g****"
+        #endif
     }
 
     @IBAction func confirmButtonAction(_ sender: Any) {
         //enter
-        let wallet = Wallet(mnemonic: commonMnemonic.trimmed)
-        WalletManager.default.wallets.append(wallet)
-        
-        //to transfer controller
-        let transferController = TransferViewController.instanceController()
-        show(transferController, sender: nil)
+        #if DEBUG
+        let mnemonic = commonMnemonic
+        #else
+        let mnemonic = textView.text
+        #endif
+        if Mnemonic.checkIsValid(mnemonic) {
+            let wallet = Wallet(mnemonic: mnemonic.trimmed)
+            WalletManager.default.wallets.append(wallet)
+            
+            //to transfer controller
+            let transferController = TransferViewController.instanceController()
+            show(transferController, sender: nil)
+        }
+        else {
+            HUD.flash(.label("Invalid mnemonic"))
+        }
     }
     
     private func configureSubview() {
